@@ -1,56 +1,54 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Information System</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght%40400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* General Body Styles */
-        body {
-            font-family: 'Roboto', sans-serif; /* Modern font */
-            margin: 0 auto; /* हे वेबसाइटला सेंटरमध्ये आणेल */
-            padding: 20px;
-            background-color: #f4f7f6; /* Light background */
-            color: #333;
-            line-height: 1.6;
-            max-width: 1200px; /* ही महत्त्वाची रुंदी आहे, तुम्ही ही किंमत बदलू शकता */
-            box-shadow: 0 0 20px rgba(0,0,0,0.05); /* हलकी शॅडो, जी कंटेंटला वेगळे दाखवेल */
-            min-height: 100vh; /* कमी कंटेंट असतानाही पूर्ण स्क्रीन घेईल */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center; /* याने मेन कंटेंट सेंटरमध्ये येईल */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
         }
 
-        /* Header Styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         h2 {
             text-align: center;
-            color: #007bff; /* Blue heading */
-            margin-bottom: 30px;
+            color: #007bff;
+            margin: 20px 0 30px;
             font-weight: 700;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
-        /* Search Container Styles */
         #searchContainer {
             background-color: #ffffff;
             padding: 25px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             display: flex;
-            flex-direction: column; /* Changed to column for button below input */
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 15px; /* Space between elements */
+            gap: 15px;
             margin-bottom: 40px;
-            flex-wrap: wrap; /* Allows elements to wrap on smaller screens */
-            width: 100%; /* Ensure it takes full available width within body's max-width */
-            max-width: 600px; /* Limit search container width slightly */
+            flex-wrap: wrap;
+            width: 90%;
+            max-width: 600px;
         }
 
         #studentNameInput {
-            width: 100%; /* Take full width within container */
+            width: 100%;
             max-width: 400px;
             padding: 12px 15px;
             border: 2px solid #ced4da;
@@ -66,7 +64,7 @@
         }
 
         #searchContainer button {
-            background-color: #007bff; /* Blue button */
+            background-color: #007bff;
             color: white;
             padding: 12px 25px;
             border: none;
@@ -75,39 +73,37 @@
             font-size: 1em;
             font-weight: 700;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            width: 100%; /* Take full width within container */
-            max-width: 200px; /* Limit button width */
+            width: 100%;
+            max-width: 200px;
         }
 
         #searchContainer button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
-            transform: translateY(-2px); /* Slight lift effect */
+            background-color: #0056b3;
+            transform: translateY(-2px);
         }
 
         #searchContainer button:active {
             transform: translateY(0);
         }
 
-        /* Search Results Container Styles */
         #searchResults {
             margin-top: 30px;
             padding: 20px 25px;
             border-radius: 10px;
-            background-color: #ffffff; /* White background */
+            background-color: #ffffff;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            display: none; /* Hidden by default */
-            opacity: 0; /* Initially transparent */
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition */
-            transform: translateY(10px); /* Slightly lower initially */
-            width: 100%; /* Take full available width within body's max-width */
-            max-width: 800px; /* Limit search results width */
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transform: translateY(10px);
+            width: 90%;
+            max-width: 800px;
         }
 
-        /* When visible */
         #searchResults.visible {
-            display: block; /* Visible */
-            opacity: 1; /* Fully opaque */
-            transform: translateY(0); /* Returns to original position */
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
         }
 
         #searchResults h3 {
@@ -119,14 +115,14 @@
         }
 
         #searchResults ul {
-            list-style: none; /* Remove bullet points */
+            list-style: none;
             padding: 0;
-            max-height: 250px; /* Limit height for scroll */
-            overflow-y: auto; /* Enable scrolling for many results */
+            max-height: 250px;
+            overflow-y: auto;
         }
 
         #searchResults ul li {
-            background-color: #eaf6ff; /* Light blue for each item */
+            background-color: #eaf6ff;
             margin-bottom: 8px;
             padding: 10px 15px;
             border-radius: 5px;
@@ -136,30 +132,29 @@
         }
 
         #searchResults ul li:hover {
-            background-color: #d1efff; /* Slightly darker blue on hover */
+            background-color: #d1efff;
         }
 
-        /* Student Profile Display Styles */
         #studentProfile {
             margin-top: 30px;
             border: 1px solid #007bff;
             padding: 20px 25px;
             border-radius: 10px;
-            background-color: #eaf6ff; /* Light blue background */
+            background-color: #eaf6ff;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            min-height: 100px; /* Ensures space even when empty */
+            min-height: 100px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-start;
-            position: relative; /* For positioning the edit button */
-            display: none; /* Hidden by default */
-            width: 100%; /* Take full available width within body's max-width */
-            max-width: 800px; /* Limit profile width */
+            position: relative;
+            display: none;
+            width: 90%;
+            max-width: 800px;
         }
         
         #studentProfile.visible {
-            display: flex; /* Visible when profile is shown */
+            display: flex;
         }
 
         #studentProfile h3 {
@@ -167,7 +162,7 @@
             margin-top: 0;
             margin-bottom: 15px;
             font-size: 1.5em;
-            width: 100%; /* Ensures heading takes full width */
+            width: 100%;
             text-align: center;
         }
 
@@ -176,12 +171,12 @@
             align-items: center;
             margin-bottom: 10px;
             width: 100%;
-            flex-wrap: wrap; /* Allow wrapping for small screens */
+            flex-wrap: wrap;
         }
 
         .profile-field strong {
             color: #0056b3;
-            min-width: 150px; /* Adjust as needed for alignment */
+            min-width: 150px;
             display: inline-block;
             font-size: 1.05em;
         }
@@ -192,7 +187,7 @@
             padding: 8px 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            margin-left: 10px; /* Space between label and input/span */
+            margin-left: 10px;
         }
         
         .profile-field input[type="file"] {
@@ -208,7 +203,7 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             margin-top: 10px;
-            display: block; /* Ensures it takes its own line */
+            display: block;
         }
 
         .profile-actions {
@@ -218,7 +213,7 @@
         }
 
         .profile-actions button {
-            background-color: #28a745; /* Green for Save */
+            background-color: #28a745;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -231,13 +226,13 @@
         }
 
         .profile-actions button.edit-btn {
-            background-color: #ffc107; /* Yellow for Edit */
+            background-color: #ffc107;
             color: #333;
-            position: absolute; /* Position relative to #studentProfile */
-            top: 20px; /* Adjust as needed */
-            right: 20px; /* Adjust as needed */
-            padding: 8px 15px; /* Smaller padding */
-            font-size: 0.9em; /* Smaller font */
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 8px 15px;
+            font-size: 0.9em;
         }
 
         .profile-actions button.edit-btn:hover {
@@ -245,8 +240,8 @@
         }
 
         .profile-actions button:hover {
-            background-color: #218838; /* Darker green on hover */
-            transform: translateY(-2px); /* Slight lift effect */
+            background-color: #218838;
+            transform: translateY(-2px);
         }
 
         .profile-actions button:active {
@@ -254,7 +249,7 @@
         }
 
         .profile-actions button.close-btn {
-            background-color: #6c757d; /* Grey color for close */
+            background-color: #6c757d;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -263,92 +258,89 @@
             font-size: 1em;
             font-weight: 700;
             transition: background-color 0.3s ease;
-            margin-left: 5px; /* Space from other buttons */
+            margin-left: 5px;
         }
 
         .profile-actions button.close-btn:hover {
-            background-color: #5a6268; /* Darker grey on hover */
+            background-color: #5a6268;
         }
         
-        /* Table Styles (already good, but slight adjustments) */
         table {
-            width: 100%;
+            width: 90%;
             border-collapse: collapse;
             margin-top: 40px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
             border-radius: 10px;
-            overflow: hidden; /* Ensures rounded corners are applied */
+            overflow: hidden;
+            margin-bottom: 50px;
         }
 
         th, td {
-            border: 1px solid #e0e0e0; /* Lighter border */
+            border: 1px solid #e0e0e0;
             padding: 12px 15px;
             text-align: left;
         }
 
         th {
-            background-color: #007bff; /* Blue header */
+            background-color: #007bff;
             color: white;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            position: sticky; /* Keeps header visible on scroll */
+            position: sticky;
             top: 0;
             z-index: 1;
         }
 
         tr:nth-child(even) {
-            background-color: #f8f8f8; /* Very light grey for even rows */
+            background-color: #f8f8f8;
         }
 
         tr:hover {
-            background-color: #e0f2f7; /* Light blue on hover */
-            cursor: pointer; /* Indicates interactivity */
+            background-color: #e0f2f7;
+            cursor: pointer;
         }
 
-        /* Responsive Design for smaller screens */
         @media (max-width: 768px) {
             body {
                 padding: 10px;
-                max-width: 100%; /* On small screens, take full width */
-                box-shadow: none; /* No shadow on small screens */
             }
             #searchContainer, #searchResults, #studentProfile {
                 padding: 15px;
-                max-width: 100%; /* Take full width on small screens */
+                width: 100%;
             }
             #searchContainer {
                 flex-direction: column;
                 gap: 10px;
             }
             #studentNameInput, #searchContainer button {
-                max-width: 100%; /* Full width for inputs/buttons in search */
+                max-width: 100%;
             }
             th, td {
                 padding: 10px;
                 font-size: 0.9em;
             }
             table {
-                display: block; /* Allows table to scroll horizontally */
+                display: block;
                 overflow-x: auto;
-                white-space: nowrap; /* Prevents text wrapping in cells */
+                white-space: nowrap;
+                width: 100%;
             }
-            /* Specific cell widths for better small screen display (optional, can be refined) */
-            th:nth-child(2), td:nth-child(2) { min-width: 180px; } /* Name */
-            th:nth-child(3), td:nth-child(3) { min-width: 150px; } /* Address */
-            th:nth-child(8), td:nth-child(8) { min-width: 180px; } /* Email */
-            th:nth-child(9), td:nth-child(9) { min-width: 120px; } /* Mobile */
-            th:nth-child(10), td:nth-child(10) { min-width: 120px; } /* DOB */
+            th:nth-child(2), td:nth-child(2) { min-width: 180px; }
+            th:nth-child(3), td:nth-child(3) { min-width: 150px; }
+            th:nth-child(8), td:nth-child(8) { min-width: 180px; }
+            th:nth-child(9), td:nth-child(9) { min-width: 120px; }
+            th:nth-child(10), td:nth-child(10) { min-width: 120px; }
 
             .profile-actions button.edit-btn {
-                position: static; /* Take normal flow in small screens */
+                position: static;
                 margin-top: 15px;
-                width: auto; /* Allow button to size naturally */
+                width: auto;
             }
 
             .profile-actions button.close-btn {
-                margin-top: 10px; /* Add some margin on top for stacking */
-                width: auto; /* Allow button to size naturally */
+                margin-top: 10px;
+                width: auto;
             }
         }
     </style>
@@ -363,7 +355,7 @@
     </div>
 
     <div id="searchResults">
-        </div>
+    </div>
 
     <div id="studentProfile">
         <h3>Select a Student</h3>
@@ -578,7 +570,7 @@
 
     <script>
         const allStudentsData = [];
-        let currentEditingStudentIndex = -1; // To keep track of which student is being edited
+        let currentEditingStudentIndex = -1;
 
         document.addEventListener('DOMContentLoaded', () => {
             const tableBody = document.getElementById('studentTableBody');
@@ -593,29 +585,25 @@
                     className: cells[4].textContent || 'N/A',
                     prnNo: cells[5].textContent || 'N/A',
                     bloodGroup: cells[6].textContent || 'N/A',
-                    emailId: cells[7].textContent ? cells[7].textContent.toLowerCase() : 'N/A', // Email to lowercase
+                    emailId: cells[7].textContent ? cells[7].textContent.toLowerCase() : 'N/A',
                     mobileNo: cells[8].textContent || 'N/A',
                     dob: cells[9].textContent || 'N/A',
-                    photo: '' // Add a photo field, initially empty
+                    photo: ''
                 };
                 allStudentsData.push(student);
-                // Add click listener to each table row for direct profile display
-                rows[i].setAttribute('data-student-index', i); // Store index
+                rows[i].setAttribute('data-student-index', i);
                 rows[i].addEventListener('click', () => displayStudentProfile(i));
             }
             
-            // Initial state: hide search results and clear its content
             const searchResultsDiv = document.getElementById('searchResults');
             searchResultsDiv.classList.remove('visible'); 
             searchResultsDiv.innerHTML = ''; 
 
-            // Hide the student profile initially
             const studentProfileDiv = document.getElementById('studentProfile');
-            studentProfileDiv.classList.remove('visible'); // Hide it
+            studentProfileDiv.classList.remove('visible');
             studentProfileDiv.innerHTML = '<h3>Select a Student</h3><p>Click on a student from the search results or the list below to view their details.</p>';
         });
 
-        // Function to handle key presses in the input field
         function handleSearchInput(event) {
             const input = document.getElementById('studentNameInput').value.toLowerCase().trim();
             const searchResultsDiv = document.getElementById('searchResults');
@@ -628,7 +616,7 @@
                     searchResultsDiv.classList.remove('visible'); 
                     searchResultsDiv.innerHTML = ''; 
                     
-                    studentProfileDiv.classList.remove('visible'); // Hide profile if search is cleared
+                    studentProfileDiv.classList.remove('visible');
                     studentProfileDiv.innerHTML = '<h3>Select a Student</h3><p>Click on a student from the search results or the list below to view their details.</p>';
                 } 
             }
@@ -639,9 +627,8 @@
             const searchResultsDiv = document.getElementById('searchResults');
             const studentProfileDiv = document.getElementById('studentProfile');
             
-            // Hide profile display when a new search is performed or search results are shown
             studentProfileDiv.classList.remove('visible'); 
-            currentEditingStudentIndex = -1; // Reset editing state
+            currentEditingStudentIndex = -1;
 
             if (input === "") {
                 searchResultsDiv.classList.remove('visible');
@@ -654,7 +641,6 @@
 
             for (let i = 0; i < allStudentsData.length; i++) {
                 const student = allStudentsData[i];
-                // Check all relevant fields for a match
                 if (
                     student.name.toLowerCase().includes(input) ||
                     student.address.toLowerCase().includes(input) ||
@@ -662,21 +648,19 @@
                     student.emailId.toLowerCase().includes(input) || 
                     student.mobileNo.includes(input) 
                 ) {
-                    matchingStudents.push({student: student, index: i}); // Store both student object and its original index
+                    matchingStudents.push({student: student, index: i});
                 }
             }
 
             if (matchingStudents.length > 0) {
                 if (matchingStudents.length === 1 && input === matchingStudents[0].student.name.toLowerCase()) {
-                    // If only one student found and input fully matches the name, display their profile directly
                     displayStudentProfile(matchingStudents[0].index);
-                    searchResultsDiv.classList.remove('visible'); // Hide search results
+                    searchResultsDiv.classList.remove('visible');
                     searchResultsDiv.innerHTML = ''; 
                 } else {
-                    // If multiple students found, or partial match, show the list
                     resultsHtml += '<ul>';
                     matchingStudents.forEach((item) => {
-                        resultsHtml += `<li onclick="displayStudentProfile(${item.index})">${item.student.name} (${item.student.prnNo})</li>`; // corrected item.student.prnNo
+                        resultsHtml += `<li onclick="displayStudentProfile(${item.index})">${item.student.name} (${item.student.prnNo})</li>`;
                     });
                     resultsHtml += '</ul>';
                     searchResultsDiv.innerHTML = resultsHtml;
@@ -690,7 +674,7 @@
 
         function displayStudentProfile(studentIndex) {
             const student = allStudentsData[studentIndex];
-            currentEditingStudentIndex = studentIndex; // Set the current student index
+            currentEditingStudentIndex = studentIndex;
             const studentProfileDiv = document.getElementById('studentProfile');
             const searchResultsDiv = document.getElementById('searchResults'); 
 
@@ -707,7 +691,6 @@
                 profileHtml += '<div class="profile-field"><strong>Mobile No.:</strong> <span id="profile-mobileNo">' + student.mobileNo + '</span></div>';
                 profileHtml += '<div class="profile-field"><strong>Date of Birth:</strong> <span id="profile-dob">' + student.dob + '</span></div>';
                 
-                // Photo display
                 profileHtml += '<div class="profile-field">';
                 profileHtml += '<strong>Photo:</strong>';
                 profileHtml += '<div id="profile-photo-container">';
@@ -719,32 +702,31 @@
                 profileHtml += '</div></div>';
 
                 profileHtml += '<div class="profile-actions">';
-                profileHtml += '<button class="edit-btn" onclick="toggleEditMode()">Edit Info</button>'; // Edit button
-                profileHtml += '<button style="display:none;" id="saveBtn" onclick="saveStudentProfile()">Save Info</button>'; // Save button
-                profileHtml += '<button style="display:none;" id="cancelBtn" class="edit-btn" onclick="displayStudentProfile(' + studentIndex + ')">Cancel</button>'; // Cancel button
-                profileHtml += '<button id="closeProfileBtn" class="close-btn" onclick="closeStudentProfile()">Close</button>'; // New Close button
+                profileHtml += '<button class="edit-btn" onclick="toggleEditMode()">Edit Info</button>';
+                profileHtml += '<button style="display:none;" id="saveBtn" onclick="saveStudentProfile()">Save Info</button>';
+                profileHtml += '<button style="display:none;" id="cancelBtn" class="edit-btn" onclick="displayStudentProfile(' + studentIndex + ')">Cancel</button>';
+                profileHtml += '<button id="closeProfileBtn" class="close-btn" onclick="closeStudentProfile()">Close</button>';
                 profileHtml += '</div>';
                 
                 studentProfileDiv.innerHTML = profileHtml;
-                studentProfileDiv.classList.add('visible'); // Make the profile visible
+                studentProfileDiv.classList.add('visible');
 
-                searchResultsDiv.classList.remove('visible'); // Hide search results when profile is shown
+                searchResultsDiv.classList.remove('visible');
                 searchResultsDiv.innerHTML = ''; 
             } else {
                 studentProfileDiv.innerHTML = '<h3>Select a Student</h3><p>Information not available.</p>';
-                studentProfileDiv.classList.remove('visible'); // Keep hidden if no student
+                studentProfileDiv.classList.remove('visible');
             }
         }
 
         function toggleEditMode() {
             const studentProfileDiv = document.getElementById('studentProfile');
             const saveBtn = document.getElementById('saveBtn');
-            const editBtn = studentProfileDiv.querySelector('.edit-btn'); // This will be the "Edit Info" button
+            const editBtn = studentProfileDiv.querySelector('.edit-btn');
             const cancelBtn = document.getElementById('cancelBtn');
-            const closeBtn = document.getElementById('closeProfileBtn'); // Get close button
+            const closeBtn = document.getElementById('closeProfileBtn');
 
             if (editBtn.textContent === "Edit Info") {
-                // Change to Edit Mode
                 const fields = ['name', 'address', 'category', 'className', 'prnNo', 'bloodGroup', 'emailId', 'mobileNo', 'dob'];
                 fields.forEach(field => {
                     const spanElement = document.getElementById('profile-' + field);
@@ -754,31 +736,29 @@
                         inputElement.type = (field === 'emailId') ? 'email' : 'text'; 
                         inputElement.value = (currentValue === 'N/A') ? '' : currentValue;
                         inputElement.id = 'input-' + field;
-                        inputElement.className = 'editable-input'; // Add a class for styling if needed
+                        inputElement.className = 'editable-input';
                         spanElement.replaceWith(inputElement); 
                     }
                 });
 
-                // Add photo input
                 const photoContainer = document.getElementById('profile-photo-container');
                 const student = allStudentsData[currentEditingStudentIndex];
                 if (photoContainer) {
                     photoContainer.innerHTML = `
-                        <img id="profile-photo" src="${student.photo || ''}" alt="Student Photo" style="${student.photo ? 'display:block;' : 'display:none;'}">
+                        <img id="profile-photo" src="${student.photo || ''}" alt="Student Photo" style="${student.photo ? 'display:block;' : 'display:none;'}" onerror="this.onerror=null;this.src='';document.getElementById('profile-photo-placeholder').style.display='block';">
                         <input type="file" id="input-photo" accept="image/*" onchange="previewPhoto(event)">
                         <p id="profile-photo-placeholder" style="${student.photo ? 'display:none;' : 'display:block;'}">Select a photo.</p>
                     `;
                 }
 
-                editBtn.style.display = 'none'; // Hide "Edit Info" button
-                saveBtn.style.display = 'inline-block'; // Show Save button
-                cancelBtn.style.display = 'inline-block'; // Show Cancel button
-                cancelBtn.style.backgroundColor = '#dc3545'; // Red for Cancel
+                editBtn.style.display = 'none';
+                saveBtn.style.display = 'inline-block';
+                cancelBtn.style.display = 'inline-block';
+                cancelBtn.style.backgroundColor = '#dc3545';
                 cancelBtn.style.color = 'white';
-                closeBtn.style.display = 'none'; // Hide Close button in edit mode
+                closeBtn.style.display = 'none';
 
-            } 
-            // The "Cancel" logic is now handled by the separate cancelBtn click directly calling displayStudentProfile
+            }
         }
 
         function previewPhoto(event) {
@@ -813,7 +793,6 @@
 
             const student = allStudentsData[currentEditingStudentIndex];
 
-            // Update fields from input elements
             const fields = ['name', 'address', 'category', 'className', 'prnNo', 'bloodGroup', 'emailId', 'mobileNo', 'dob'];
             fields.forEach(field => {
                 const inputElement = document.getElementById('input-' + field);
@@ -822,23 +801,20 @@
                 }
             });
 
-            // Handle photo save (only if a new one was selected)
             const photoInput = document.getElementById('input-photo');
             if (photoInput && photoInput.files.length > 0) {
                 const reader = new FileReader();
                 reader.onload = function() {
-                    student.photo = reader.result; // Save the base64 encoded image
+                    student.photo = reader.result;
                     updateTableAndDisplayProfile(student);
                 };
                 reader.readAsDataURL(photoInput.files[0]);
             } else {
-                // If no new photo is selected, just update other fields and re-display
                 updateTableAndDisplayProfile(student);
             }
         }
 
         function updateTableAndDisplayProfile(student) {
-            // Update the main table's row as well
             const tableBody = document.getElementById('studentTableBody');
             const row = tableBody.rows[currentEditingStudentIndex];
             row.cells[1].textContent = student.name;
@@ -851,19 +827,16 @@
             row.cells[8].textContent = student.mobileNo;
             row.cells[9].textContent = student.dob;
 
-            // Re-display the profile to show saved (non-editable) state
             displayStudentProfile(currentEditingStudentIndex);
             alert('Information saved successfully!');
         }
 
         function closeStudentProfile() {
             const studentProfileDiv = document.getElementById('studentProfile');
-            studentProfileDiv.classList.remove('visible'); // Hide the profile
-            // Reset the content to the initial message
+            studentProfileDiv.classList.remove('visible');
             studentProfileDiv.innerHTML = '<h3>Select a Student</h3><p>Click on a student from the search results or the list below to view their details.</p>';
-            currentEditingStudentIndex = -1; // Reset the editing index
+            currentEditingStudentIndex = -1;
         }
-
     </script>
 
 </body>
