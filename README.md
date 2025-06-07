@@ -9,11 +9,18 @@
         /* General Body Styles */
         body {
             font-family: 'Roboto', sans-serif; /* Modern font */
-            margin: 0;
+            margin: 0 auto; /* हे वेबसाइटला सेंटरमध्ये आणेल */
             padding: 20px;
             background-color: #f4f7f6; /* Light background */
             color: #333;
             line-height: 1.6;
+            max-width: 1200px; /* ही महत्त्वाची रुंदी आहे, तुम्ही ही किंमत बदलू शकता */
+            box-shadow: 0 0 20px rgba(0,0,0,0.05); /* हलकी शॅडो, जी कंटेंटला वेगळे दाखवेल */
+            min-height: 100vh; /* कमी कंटेंट असतानाही पूर्ण स्क्रीन घेईल */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center; /* याने मेन कंटेंट सेंटरमध्ये येईल */
         }
 
         /* Header Styles */
@@ -38,6 +45,8 @@
             gap: 15px; /* Space between elements */
             margin-bottom: 40px;
             flex-wrap: wrap; /* Allows elements to wrap on smaller screens */
+            width: 100%; /* Ensure it takes full available width within body's max-width */
+            max-width: 600px; /* Limit search container width slightly */
         }
 
         #studentNameInput {
@@ -90,6 +99,8 @@
             opacity: 0; /* Initially transparent */
             transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition */
             transform: translateY(10px); /* Slightly lower initially */
+            width: 100%; /* Take full available width within body's max-width */
+            max-width: 800px; /* Limit search results width */
         }
 
         /* When visible */
@@ -143,6 +154,8 @@
             align-items: flex-start;
             position: relative; /* For positioning the edit button */
             display: none; /* Hidden by default */
+            width: 100%; /* Take full available width within body's max-width */
+            max-width: 800px; /* Limit profile width */
         }
         
         #studentProfile.visible {
@@ -213,7 +226,7 @@
             cursor: pointer;
             font-size: 1em;
             font-weight: 700;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
             margin: 0 5px;
         }
 
@@ -233,6 +246,11 @@
 
         .profile-actions button:hover {
             background-color: #218838; /* Darker green on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        .profile-actions button:active {
+            transform: translateY(0);
         }
 
         .profile-actions button.close-btn {
@@ -292,13 +310,19 @@
         @media (max-width: 768px) {
             body {
                 padding: 10px;
+                max-width: 100%; /* On small screens, take full width */
+                box-shadow: none; /* No shadow on small screens */
+            }
+            #searchContainer, #searchResults, #studentProfile {
+                padding: 15px;
+                max-width: 100%; /* Take full width on small screens */
             }
             #searchContainer {
                 flex-direction: column;
                 gap: 10px;
             }
-            #studentNameInput {
-                max-width: 100%;
+            #studentNameInput, #searchContainer button {
+                max-width: 100%; /* Full width for inputs/buttons in search */
             }
             th, td {
                 padding: 10px;
