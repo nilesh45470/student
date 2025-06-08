@@ -10,7 +10,7 @@
         body {
             font-family: 'Open Sans', sans-serif;
             padding: 20px;
-            background-color: #e9f2f7; /* Lighter blue background */
+            background-color: #e9f2f7; 
             color: #333;
             line-height: 1.6;
             box-shadow: 0 0 25px rgba(0,0,0,0.1); /* Softer shadow */
