@@ -482,7 +482,7 @@
                 <tr><td>83</td><td>Mali Ghansham Narayan</td><td></td><td></td><td>FYBsc</td><td>2024015400342337</td><td></td><td></td><td></td><td></td></tr>
                 <tr><td>84</td><td>Mali Rushikesh Vikas</td><td>Daskebardi</td><td>OBC</td><td>FYBsc</td><td>2024015400350387</td><td></td><td>rushikeshmali274@gmail.com</td><td>8830664245</td><td></td></tr>
                 <tr><td>85</td><td>Mali Vaibhavi Kailas</td><td></td><td></td><td>FYBsc</td><td>2024015400342183</td><td></td><td></td><td></td><td>27 January 2006</td></tr>
-                <tr><td>86</td><td>Mande Mayuri Dnyaneshwar</td><td>Shindi</td><td>OBC</td><td>FYBsc</td><td>2024015400331467</td><td></td><td>mandem9730@gmail.com</td><td>9730263096</td><td>14 July 2006</td></tr>
+                <tr><td>86</td><td>Mande Mayuri Dnyaneshwar</td><td>Shindi</td><td>OBC</td><td>FYBsc</td><td>2024015400331467</td><td></td><td>mandem9730@gmail.com</td><td>9730263096</td><td>14 June 2006</td></tr>
                 <tr><td>87</td><td>Mande Raj Pandurang</td><td>Shindi</td><td>OBC</td><td>FYBsc</td><td>2024015400342577</td><td>O-</td><td>mandepandurang3@gmail.com</td><td>8788251864</td><td></td></tr>
                 <tr><td>88</td><td>Marathe Shaileja Somnath</td><td></td><td></td><td>FYBsc</td><td>2024015400342136</td><td></td><td></td><td></td><td></td></tr>
                 <tr><td>89</td><td>Mohammad Danish Shaikh</td><td></td><td></td><td>FYBsc</td><td>2024015400331951</td><td></td><td></td><td></td><td></td></tr>
